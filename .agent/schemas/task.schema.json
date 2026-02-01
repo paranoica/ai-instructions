@@ -1,0 +1,53 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Task Tracker",
+    "type": "object",
+    "properties": {
+        "status": {
+            "type": "string",
+            "enum": [
+                "planning",
+                "in_progress",
+                "testing",
+                "completed",
+                "blocked"
+            ]
+        },
+        "current_step_id": {
+            "type": "integer",
+            "description": "ID of the step currently being executed from the plan."
+        },
+        "checklist": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "completed": {
+                        "type": "boolean"
+                    },
+                    "notes": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "title",
+                    "completed"
+                ]
+            }
+        },
+        "blocking_issues": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of blockers if status is 'blocked'."
+        }
+    },
+    "required": [
+        "status",
+        "checklist"
+    ]
+}

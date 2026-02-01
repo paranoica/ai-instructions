@@ -1,0 +1,65 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Technology Stack Definition",
+    "description": "Defines the active technology stack for the project to guide the agent's architectural decisions.",
+    "type": "object",
+    "properties": {
+        "project_type": {
+            "type": "string",
+            "enum": [
+                "frontend",
+                "backend",
+                "fullstack",
+                "mobile",
+                "cli",
+                "library"
+            ],
+            "description": "The high-level category of the project."
+        },
+        "primary_language": {
+            "type": "string",
+            "description": "The main programming language (e.g., 'TypeScript', 'Go', 'Dart', 'Python')."
+        },
+        "framework": {
+            "type": "string",
+            "description": "The core framework used (e.g., 'Next.js', 'NestJS', 'Flutter', 'Fiber')."
+        },
+        "database": {
+            "type": "object",
+            "properties": {
+                "engine": {
+                    "type": "string",
+                    "description": "e.g., 'PostgreSQL', 'MongoDB'"
+                },
+                "orm": {
+                    "type": "string",
+                    "description": "e.g., 'TypeORM', 'Prisma', 'GORM'"
+                }
+            }
+        },
+        "package_manager": {
+            "type": "string",
+            "enum": [
+                "npm",
+                "yarn",
+                "pnpm",
+                "bun",
+                "go mod",
+                "flutter pub",
+                "pip"
+            ],
+            "description": "The tool used for dependency management."
+        },
+        "style_guide_ref": {
+            "type": "string",
+            "default": ".agent/artifacts/conventions.md",
+            "description": "Path to the coding style conventions file."
+        }
+    },
+    "required": [
+        "project_type",
+        "primary_language",
+        "framework",
+        "package_manager"
+    ]
+}

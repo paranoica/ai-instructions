@@ -1,0 +1,71 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Implementation Plan",
+    "type": "object",
+    "properties": {
+        "goal": {
+            "type": "string",
+            "description": "The high-level objective of the current session."
+        },
+        "architecture_decisions": {
+            "type": "array",
+            "description": "List of architectural choices made for this specific plan.",
+            "items": {
+                "type": "string"
+            }
+        },
+        "steps": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "files_to_touch": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of files that will be created or modified."
+                    },
+                    "verification_command": {
+                        "type": "string",
+                        "description": "Command to verify this specific step (e.g., specific test run)."
+                    }
+                },
+                "required": [
+                    "id",
+                    "title",
+                    "description"
+                ]
+            }
+        },
+        "context_verification": {
+            "type": "object",
+            "properties": {
+                "checked_docs": {
+                    "type": "boolean",
+                    "description": "Must be true if external libraries are used."
+                },
+                "context7_queries": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of queries sent to mcp-context7 to validate this plan."
+                }
+            }
+        }
+    },
+    "required": [
+        "goal",
+        "steps"
+    ]
+}
