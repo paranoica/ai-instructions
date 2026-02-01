@@ -43,7 +43,9 @@ The system is divided into layers:
 | **/audit**          | Sherlock    | Performs Security (OWASP) and Architecture audit.       |
 | **/infra**          | Ops         | Scaffolds K8s, Nginx, Kafka, RabbitMQ, Docker.          |
 | **/db-migrate**     | DBA         | Safely manages database migrations.                     |
-| **SYSTEM**          |             |                                                         |
+| **DOCS & SYSTEM**   |             |                                                         |
+| **/doc**            | Tech Writer | Generates README, Swagger/OpenAPI, or Wikis.            |
+| **/test-agent**     | System      | Runs a logic simulation to verify IDE integration.      |
 | **/info**           | System      | Checks agent health, active stack, and memory status.   |
 | **/summary**        | Architect   | Summarizes session progress and file changes.           |
 | **/help**           | System      | Shows the list of available commands.                   |

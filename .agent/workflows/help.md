@@ -19,13 +19,13 @@ Display the following dashboard in a Markdown Code Block:
 
 AVAILABLE COMMANDS:
 
-[ STRATEGY & PRODUCT (Optional) ]
+[ STRATEGY & PRODUCT ]
   /startup   CEO: Validate idea & define Strategy
   /spec      CPO: Create Product Requirements (PRD)
   /promote   CMO: Marketing & Release Notes
   /verify-release CISO: Final Security Veto Check
 
-[ DEVELOPMENT (Standard) ]
+[ DEVELOPMENT ]
   /feature   Start a new feature cycle (Research -> Plan -> Code)
   /prompt    Convert rough idea into engineering spec
 
@@ -39,9 +39,11 @@ AVAILABLE COMMANDS:
   /db-migrate DBA: Safe schema changes and migrations
   /docker-build Ops: Build, optimize, and scan container images
 
-[ ANALYSIS & SYSTEM ]
+[ DOCUMENTATION & SYSTEM ]
+  /doc       Writer: Generate Swagger, README, or Wiki
   /audit     Sherlock: Security & Architecture review (OWASP)
-  /info      Deep system diagnostic (Context7 & Stack check)
+  /test-agent System: Verify Agent logic, tools, and memory
+  /info      System: Deep diagnostic (Context7 & Stack check)
   /summary   Show session progress, changed files, and next steps
   /commit    Git Manager: Generate semantic commit
   /help      Show this menu

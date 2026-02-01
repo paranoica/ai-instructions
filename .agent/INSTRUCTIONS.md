@@ -30,25 +30,21 @@ You can use the system in two ways:
 #### /startup
 
 - **Role**: CEO.
-- **Context**: When starting a new project or major pivot.
 - **Action**: Critiques business viability, checks competitors, and creates a STRATEGY.md.
 
 #### /spec
 
 - **Role**: CPO.
-- **Context**: After strategy is defined.
 - **Action**: Converts the Strategy into a detailed Product Requirements Document (PRD.md) with User Stories.
 
 #### /promote
 
 - **Role**: CMO.
-- **Context**: After a feature is completed.
 - **Action**: Generates release notes, tweets, or blog posts based on the work done.
 
 #### /verify-release
 
 - **Role**: CISO.
-- **Context**: Before deployment.
 - **Action**: Final security scan. Has VETO power to block release if critical bugs exist.
 
 ### Development Commands (Standard)
@@ -56,13 +52,11 @@ You can use the system in two ways:
 #### /prompt <raw_idea>
 
 - **Role**: Architect.
-- **Context**: When you have a vague idea (e.g., "I need a payment system").
 - **Action**: Analyzes your stack and requirements to generate a rigorous Engineering Spec.
 
 #### /feature <description>
 
 - **Role**: Builder.
-- **Context**: The main command for writing code.
 - **Action**:
   1.  **Research**: Calls external docs to verify APIs via Context7.
   2.  **Plan**: Writes a step-by-step plan to artifacts/plan.md.
@@ -74,13 +68,11 @@ You can use the system in two ways:
 #### /fix
 
 - **Role**: Medic.
-- **Context**: When you see a red squiggly line, a build error, or a any type.
 - **Action**: Runs a loop: Analyze Error -> Research Library Types -> Apply Strict Fix -> Verify.
 
 #### /format
 
 - **Role**: Janitor.
-- **Context**: Before committing code.
 - **Action**: Enforces the project style guide (artifacts/conventions.md).
   - Converts spaces to Tabs (4).
   - Renames variables to snake_case.
@@ -89,7 +81,6 @@ You can use the system in two ways:
 #### /audit
 
 - **Role**: Sherlock.
-- **Context**: Before deploying or merging a PR.
 - **Action**: Scans for OWASP vulnerabilities and architectural violations. Output is read-only.
 
 ### DevOps & Infrastructure
@@ -97,16 +88,26 @@ You can use the system in two ways:
 #### /infra
 
 - **Role**: Ops Manager.
-- **Context**: When setting up the environment.
 - **Action**: Scaffolds configurations for Docker, Kubernetes, Nginx, Kafka, or RabbitMQ.
 
 #### /db-migrate
 
 - **Role**: DBA.
-- **Context**: When you need to change the database structure.
 - **Action**: Safely modifies the schema file and generates a migration script.
 
-### System & Git
+### Documentation & System
+
+#### /doc
+
+- **Role**: Tech Writer.
+- **Context**: When code is done but documentation is missing.
+- **Action**: Generates Swagger/OpenAPI specs from code, updates README.md, or creates internal Wiki pages.
+
+#### /test-agent
+
+- **Role**: System.
+- **Context**: On first install or when debugging the IDE integration.
+- **Action**: Runs a logic simulation to verify that the Agent can read/write memory and access Context7 tools without hallucinating.
 
 #### /info
 
@@ -168,8 +169,10 @@ You can use the system in two ways:
 - /infra — **Ops**. Настраивает K8s, Kafka, Nginx.
 - /db-migrate — **DBA**. Безопасные миграции БД.
 
-### Система
+### Документация и Система
 
+- /doc — **Писатель**. Создает Swagger, README или Wiki по коду.
+- /test-agent — **Система**. Тест-драйв агента (проверка памяти и инструментов).
 - /info — Диагностика стека и инструментов.
 - /commit — Умный коммит.
 - /summary — Отчет за сессию.
