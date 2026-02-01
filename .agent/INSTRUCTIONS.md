@@ -8,113 +8,114 @@ This document provides a detailed guide on how to operate the Agent OS embedded 
 
 ### The Architecture
 
-You are not working with a simple chatbot. You are working with a **Multi-Role Team**.
+You are not working with a simple chatbot. You are working with a Multi-Role Team.
 
 - **Kernel**: Prevents hallucinations. If the Agent doesn't know a library version, it looks it up (Context7).
-- **Memory**: The Agent remembers your tech stack and current plan between sessions via the `.agent/artifacts/` folder.
+- **Memory**: The Agent remembers your tech stack and current plan between sessions via the .agent/artifacts/ folder.
 - **Strictness**: Code style (snake_case, tabs) is enforced programmatically.
 
-### The Workflow
+### The Workflow Modes
 
-The ideal development loop follows this pattern:
+You can use the system in two ways:
 
-1.  **Initialize**: `/info` (Detect stack).
-2.  **Define**: `/prompt` (Clarify requirements).
-3.  **Build**: `/feature` (Plan -> Code -> Verify).
-4.  **Polish**: `/fix` (Debug) -> `/format` (Style) -> `/audit` (Security).
-5.  **Save**: `/commit` (Git).
+1.  **Rapid Mode (Vibecoding)**: Jump straight to coding using feature, fix, and format commands.
+2.  **Enterprise Mode (Startup Sim)**: Plan the business first using startup and spec commands, then execute.
 
 ---
 
 ## 2. COMMAND REFERENCE
 
-### System Commands
+### C-Suite Commands (Enterprise Mode)
 
-#### `/info`
+#### /startup
 
-- **Context**: Use at the start of a session or when opening a new project.
-- **Action**: Performs a deep diagnostic.
-  1.  Checks connection to Context7 tools.
-  2.  Scans project files (`package.json`, `requirements.txt`) to activate the correct Rule Set.
-  3.  Validates the integrity of the Memory (artifacts).
-- **Output**: System Health Report.
+- **Role**: CEO.
+- **Context**: When starting a new project or major pivot.
+- **Action**: Critiques business viability, checks competitors, and creates a STRATEGY.md.
 
-#### `/help`
+#### /spec
 
-- **Context**: When you forget a command.
-- **Action**: Displays the main menu and current status.
+- **Role**: CPO.
+- **Context**: After strategy is defined.
+- **Action**: Converts the Strategy into a detailed Product Requirements Document (PRD.md) with User Stories.
 
-#### `/summary`
+#### /promote
 
-- **Context**: Use before taking a break or finishing work.
-- **Action**: Compares the `task.md` (Plan) against `git status` (Reality).
-- **Output**: A report listing completed tasks, modified files, and recommended next steps.
+- **Role**: CMO.
+- **Context**: After a feature is completed.
+- **Action**: Generates release notes, tweets, or blog posts based on the work done.
 
-### Development Commands
+#### /verify-release
 
-#### `/prompt <raw_idea>`
+- **Role**: CISO.
+- **Context**: Before deployment.
+- **Action**: Final security scan. Has VETO power to block release if critical bugs exist.
 
+### Development Commands (Standard)
+
+#### /prompt <raw_idea>
+
+- **Role**: Architect.
 - **Context**: When you have a vague idea (e.g., "I need a payment system").
-- **Action**: The **Architect** analyzes your stack and requirements to generate a rigorous Engineering Spec.
-- **Why use it**: It prevents the "garbage in, garbage out" problem.
+- **Action**: Analyzes your stack and requirements to generate a rigorous Engineering Spec.
 
-#### `/feature <description>`
+#### /feature <description>
 
+- **Role**: Builder.
 - **Context**: The main command for writing code.
 - **Action**:
-  1.  **Research**: Calls external docs to verify APIs.
-  2.  **Plan**: Writes a step-by-step plan to `artifacts/plan.md`.
+  1.  **Research**: Calls external docs to verify APIs via Context7.
+  2.  **Plan**: Writes a step-by-step plan to artifacts/plan.md.
   3.  **Approve**: Waits for your confirmation.
   4.  **Execute**: Writes code, tests, and updates the task tracker.
 
-### Maintenance Commands
+### Maintenance & Quality
 
-#### `/fix`
+#### /fix
 
-- **Context**: When you see a red squiggly line, a build error, or a `any` type.
-- **Action**: The **Medic** runs a loop: Analyze Error -> Research Library Types -> Apply Strict Fix -> Verify.
-- **Note**: It aggressively removes `any` types and replaces them with strict Interfaces.
+- **Role**: Medic.
+- **Context**: When you see a red squiggly line, a build error, or a any type.
+- **Action**: Runs a loop: Analyze Error -> Research Library Types -> Apply Strict Fix -> Verify.
 
-#### `/format`
+#### /format
 
+- **Role**: Janitor.
 - **Context**: Before committing code.
-- **Action**: The **Janitor** enforces the project style guide (`artifacts/conventions.md`).
+- **Action**: Enforces the project style guide (artifacts/conventions.md).
   - Converts spaces to Tabs (4).
-  - Renames variables to `snake_case`.
+  - Renames variables to snake_case.
   - Removes all comments and console logs.
 
-#### `/audit`
+#### /audit
 
+- **Role**: Sherlock.
 - **Context**: Before deploying or merging a PR.
-- **Action**: The **Sherlock** skill scans for:
-  - Security vulnerabilities (OWASP).
-  - Performance bottlenecks (N+1 queries).
-  - Architectural violations.
-- **Output**: A read-only report. It does not modify code.
+- **Action**: Scans for OWASP vulnerabilities and architectural violations. Output is read-only.
 
 ### DevOps & Infrastructure
 
-#### `/infra`
+#### /infra
 
+- **Role**: Ops Manager.
 - **Context**: When setting up the environment.
-- **Action**: Scaffolds configurations for Docker, Kubernetes, Nginx, Kafka, or RabbitMQ based on best practices.
+- **Action**: Scaffolds configurations for Docker, Kubernetes, Nginx, Kafka, or RabbitMQ.
 
-#### `/db-migrate`
+#### /db-migrate
 
+- **Role**: DBA.
 - **Context**: When you need to change the database structure.
-- **Action**: Safely modifies the schema file and generates a migration script. Prevents data loss.
+- **Action**: Safely modifies the schema file and generates a migration script.
 
-#### `/docker-build`
+### System & Git
 
-- **Context**: To verify the application container.
-- **Action**: Builds the image, optimizes layers, and runs vulnerability scans.
+#### /info
 
-### Version Control
+- **Action**: Performs a deep diagnostic of tools and detected stack.
 
-#### `/commit`
+#### /commit
 
-- **Context**: When work is done and verified.
-- **Action**: Generates a Semantic Commit Message (e.g., `feat(auth): add login`) based on staged changes and commits them.
+- **Role**: Git Manager.
+- **Action**: Generates a Semantic Commit Message (e.g., feat(auth): add login) based on staged changes and commits them.
 
 ---
 
@@ -122,51 +123,53 @@ The ideal development loop follows this pattern:
 
 Это документ описывает, как управлять Агентной ОС (Agent OS).
 
-## 1. Основные Концепции
+## 1. Режимы Работы
 
-### Архитектура
+### Режим "Скорость" (Vibecoding)
 
-Вы работаете не с чат-ботом, а с **Командой Ролей**:
+Используйте, когда нужно просто писать код.
 
-- **Ядро**: Защищает от выдумок (галлюцинаций). Агент обязан проверять версии библиотек через Context7.
-- **Память**: Папка `.agent/artifacts/` хранит контекст (планы, стек, решения) между сессиями.
-- **Строгость**: Стиль кода (snake_case, табы) применяется автоматически.
+1.  **ТЗ**: /prompt "Идея".
+2.  **Код**: /feature "Задача".
+3.  **Полировка**: /fix -> /format.
+4.  **Гит**: /commit.
 
-### Рабочий Процесс
+### Режим "Энтерпрайз" (Компания)
 
-1.  **Старт**: `/info` (Определение стека).
-2.  **Задача**: `/prompt` (Уточнение ТЗ).
-3.  **Код**: `/feature` (План -> Код -> Тест).
-4.  **Качество**: `/fix` (Баги) -> `/format` (Стиль) -> `/audit` (Безопасность).
-5.  **Финал**: `/commit` (Гит).
+Используйте для стартапов и проработки продукта.
+
+1.  **Стратегия**: /startup (CEO).
+2.  **Спецификация**: /spec (CPO).
+3.  **Реализация**: /feature (CTO/Team).
+4.  **Проверка**: /verify-release (CISO).
+5.  **Маркетинг**: /promote (CMO).
 
 ---
 
 ## 2. СПРАВОЧНИК КОМАНД
 
-### Системные
+### Бизнес (C-Suite)
 
-- `/info` — Диагностика. Проверяет инструменты и определяет, какой язык вы используете (Python, JS, Go).
-- `/help` — Показать меню команд.
-- `/summary` — Отчет за сессию. Что сделано, какие файлы затронуты.
+- /startup — **CEO**. Анализ жизнеспособности идеи и рынка.
+- /spec — **CPO**. Создание PRD и User Stories.
+- /verify-release — **CISO**. Блокировка релиза при наличии уязвимостей.
+- /promote — **CMO**. Генерация маркетинговых текстов.
 
 ### Разработка
 
-- `/prompt <идея>` — **Архитектор** превращает вашу идею в детальное ТЗ с учетом текущего стека.
-- `/feature <задача>` — **Строитель** начинает работу. Сначала читает документацию (чтобы не ошибиться в версиях), строит план, спрашивает разрешение, и только потом пишет код.
+- /prompt — **Архитектор**. Уточнение ТЗ.
+- /feature — **Строитель**. План -> Код -> Тест. (Без галлюцинаций!).
 
-### Поддержка и Качество
+### Качество и Инфраструктура
 
-- `/fix` — **Медик**. Исправляет ошибки компиляции и убирает типы `any`, заменяя их на строгие интерфейсы.
-- `/format` — **Уборщик**. Приводит код к стандарту: Табы (4 пробела), snake_case, удаляет все комментарии и логи.
-- `/audit` — **Шерлок**. Ищет уязвимости безопасности и проблемы производительности. Не правит код, только докладывает.
+- /fix — **Медик**. Лечит баги и типизацию (убирает any).
+- /format — **Уборщик**. Форматирует код (snake_case, табы, без комментов).
+- /audit — **Шерлок**. Ищет дыры в безопасности.
+- /infra — **Ops**. Настраивает K8s, Kafka, Nginx.
+- /db-migrate — **DBA**. Безопасные миграции БД.
 
-### Инфраструктура (DevOps)
+### Система
 
-- `/infra` — Создает конфиги для K8s, Nginx, Kafka, Redis.
-- `/db-migrate` — **DBA**. Безопасно меняет схему базы данных и создает файлы миграций.
-- `/docker-build` — Собирает и оптимизирует Docker-образ.
-
-### Git
-
-- `/commit` — Анализирует изменения и делает коммит с правильным описанием (например, `feat: ...` или `fix: ...`).
+- /info — Диагностика стека и инструментов.
+- /commit — Умный коммит.
+- /summary — Отчет за сессию.
