@@ -48,3 +48,15 @@ Activation: Glob(package.json, tsconfig.json, **/\*.ts, **/_.tsx, \*\*/_.js)
 - **Indentation**: Tabs (width 4).
 - **Quotes**: Double quotes `"`.
 - **Cleanliness**: Zero comments. Zero console logs.
+
+## 5. RESPONSIVE & PERFORMANCE STANDARDS (MANDATORY)
+
+- **Mobile-First Strategy**:
+  - All CSS must be written for Mobile (`base`) first, then scaled up using breakpoints (`sm:`, `md:`, `lg:`).
+  - **Forbidden**: Fixed widths (e.g., `width: 1200px`). Use max-width with percentages or `rem`.
+  - **Touch Targets**: All interactive elements must be at least 44x44px on touch devices.
+- **Performance Optimization**:
+  - **Images**: ALWAYS use optimized components (`next/image`) with strict sizing/aspect ratio.
+  - **Fonts**: Use self-hosted or optimized loaders (`next/font`).
+  - **Core Web Vitals**: Code must optimize for LCP (Loading speed) and CLS (Visual stability - always define dimensions for media).
+  - **Code Splitting**: Lazy load heavy components (`next/dynamic` or `React.lazy`).
