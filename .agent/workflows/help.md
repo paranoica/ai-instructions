@@ -15,7 +15,7 @@ Display the following dashboard in a Markdown Code Block:
 
 ```text
 +--------------------------------------------------+
-|                   AGENT OS v1.0                  |
+|               AGENT OS v1.0                      |
 +--------------------------------------------------+
 | ACTIVE STACK: [Language] / [Framework]           |
 | MEMORY STATE: [Task Status]                      |
@@ -32,6 +32,11 @@ AVAILABLE COMMANDS:
   /format    Janitor: Enforce snake_case, tabs(4), remove comments
   /refactor  Perform safe architectural refactoring
 
+[ INFRASTRUCTURE (DEVOPS) ]
+  /infra     Ops: K8s, Nginx, Kafka, RabbitMQ, Docker setup
+  /db-migrate DBA: Safe schema changes and migrations
+  /docker-build Ops: Build, optimize, and scan container images
+
 [ ANALYSIS & REPORTING ]
   /audit     Sherlock: Security & Architecture review (OWASP)
   /info      Deep system diagnostic (Context7 & Stack check)
@@ -42,5 +47,5 @@ AVAILABLE COMMANDS:
   /commit    Git Manager: Generate semantic commit from staged diff
 
 USAGE:
-  Type command in chat. Example: "/feature user login"
+  Type command in chat. Example: "/infra setup kafka"
 ```

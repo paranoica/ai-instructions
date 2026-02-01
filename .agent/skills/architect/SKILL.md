@@ -28,3 +28,16 @@ When the user asks to refine a task or generate a prompt:
 
 - **Plan Creation**: When starting a feature, create/reset `.agent/artifacts/plan.md`.
 - **ADR Recording**: If a major decision is made (e.g., "Switching from Axios to Fetch"), append a record to `.agent/artifacts/adr.md`.
+
+## 4. MICROSERVICES & MESSAGING STRATEGY
+
+When designing distributed systems:
+
+1.  **Boundaries**: Define service boundaries based on Domain-Driven Design (Bounded Contexts).
+2.  **Communication**:
+    - Sync: REST/gRPC (Internal).
+    - Async: Kafka/RabbitMQ (Eventual Consistency).
+3.  **Broker Setup**:
+    - Kafka: Define Topic partitions and replication factor.
+    - RabbitMQ: Define Exchange type (Topic/Fanout) and DLQ policy.
+4.  **Resilience**: Enforce Circuit Breaker and Retry patterns in the plan.
