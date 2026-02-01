@@ -27,8 +27,10 @@ Convert code logic into human-readable or machine-readable documentation.
 1.  **Analyze**: Read `.agent/artifacts/adr.md` and folder structure.
 2.  **Draft**: Explain the high-level architecture, module boundaries, and data flow.
 
-## 3. STYLE GUIDE
+## 3. STYLE GUIDE (STRICT)
 
-- **Format**: Markdown (standard).
-- **Language**: English (unless requested otherwise).
-- **Tone**: Professional, concise, objective.
+- **Language**: English is the **MANDATORY DEFAULT**.
+  - _Exception_: If and ONLY IF the user explicitly requests another language (e.g., "Write docs in Russian"), obey the request.
+- **Visuals**: **NO EMOJIS**. Use standard Markdown formatting (lists, headers, code blocks, tables) for visual structure.
+- **Tone**: Professional, engineering-focused, objective. Avoid conversational fluff.
+- **Format**: Standard Markdown.

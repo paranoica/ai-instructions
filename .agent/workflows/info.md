@@ -1,7 +1,3 @@
----
-description: Run a deep diagnostic of the Agent OS, checking memory, tools, and rules.
----
-
 # SYSTEM DIAGNOSTIC WORKFLOW
 
 1.  **Identity Check**: Confirm `GEMINI.md` is active and Protocol Zero (Anti-Hallucination) is engaged.
