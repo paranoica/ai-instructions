@@ -19,12 +19,15 @@ Analyze code changes and synthesize a semantic, descriptive commit message.
     - `refactor`: Restructuring code without changing behavior.
     - `docs`: Documentation only.
     - `chore`: Maintainance, deps, config.
+    - `ci`: DevOps/DevSecOps/Pipeline config.
 
 3.  **Formatting Rules**:
     - **Structure**: `<type>(<scope>): <subject>`
     - **Scope**: The module or file affected (e.g., `auth`, `user_controller`, `ui`).
     - **Subject**: Use imperative mood ("add" not "added"). Lowercase. No period at end.
     - **Body** (Optional): Bullet points explaining _why_, not _what_.
+    - **Length**: Max 72 chars total.
+    - **Constraint**: **SINGLE LINE ONLY**. Do not add a description body unless explicitly requested by the user.
 
 ## 3. EXAMPLE OUTPUTS
 
